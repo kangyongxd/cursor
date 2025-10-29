@@ -1,0 +1,22 @@
+{
+  "name": "cursor-vite-vue2-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "iview": "^3.5.4",
+    "vue": "^2.7.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue2": "^2.3.3",
+    "vite": "^5.4.0",
+    "vue-template-compiler": "^2.7.16"
+  }
+}
+
+
