@@ -5,6 +5,8 @@
       placeholder="请选择"
       style="width:300px;"
     />
+    <br>
+    <p>Hover over this <span data-title="This is an instant tooltip!">text</span>.</p>
   </div>
 </template>
 
@@ -55,13 +57,14 @@ export default {
       const menuRoot = rootNode.classList.contains('ivu-cascader-menu') ? rootNode : rootNode.querySelector('.ivu-cascader-menu')
       if (!menuRoot) return
       // iview 不同版本类名差异，做多类名兼容
-      const items = menuRoot.querySelectorAll('.ivu-cascader-list-item, .ivu-cascader-menu-item, .ivu-menu-item')
+      const items = menuRoot.querySelectorAll('.ivu-cascader-menu-item')
       items.forEach(item => {
         // 防止重复设置
         if (item.dataset.tooltipSet === '1') return
         const text = (item.textContent || '').trim()
         if (text) {
-          item.setAttribute('title', text)
+          // item.setAttribute('title', text)
+          item.setAttribute('data-title', text)
           item.dataset.tooltipSet = '1'
         }
       })
@@ -72,12 +75,16 @@ export default {
 
 <style scoped>
 /* 给下拉项加文本省略样式，便于展示 tooltip */
-.ivu-cascader-menu .ivu-cascader-list-item,
-.ivu-cascader-menu .ivu-cascader-menu-item,
-.ivu-cascader-menu .ivu-menu-item {
-  overflow: hidden;
-  text-overflow: ellipsis;
+/deep/.ivu-cascader-menu-item {
+  position: relative;
+}
+
+/deep/.ivu-cascader-menu-item:hover::after {
+  content: attr(data-title);
+  /* Add styling for your tooltip here (e.g., background, padding, border) */
+  position: absolute;
+  top: 100%; /* Adjust position as needed */
+  left: 0;
   white-space: nowrap;
-  max-width: 240px; /* 根据需要调整宽度 */
 }
 </style>
