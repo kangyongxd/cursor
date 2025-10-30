@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "iview": "^3.5.4",
-    "vue": "^2.7.16"
+    "vue": "^2.7.16",
+    "vue-router": "^3.6.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue2": "^2.3.3",
@@ -18,5 +19,3 @@
     "vue-template-compiler": "^2.7.16"
   }
 }
-
-

@@ -1,14 +1,14 @@
 <template>
   <div id="app" style="padding:24px;">
-    <h3>iview Cascader 每项 tooltip 演示</h3>
-    <CascaderWithTooltips />
+    <router-link to="/demo1">Demo1</router-link> |
+    <router-link to="/demo2">Demo2</router-link>
+    <br />
+    <router-view />
   </div>
 </template>
 
 <script>
-import CascaderWithTooltips from './components/CascaderWithTooltips.vue'
 export default {
-  name: 'App',
-  components: { CascaderWithTooltips }
+  name: 'App'
 }
 </script>
