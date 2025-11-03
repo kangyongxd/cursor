@@ -1,6 +1,12 @@
 <template>
   <div id="container">
-    <Cascader :data="options" placeholder="请选择" style="width: 300px" />
+    <Cascader
+      :data="options"
+      ref="cascaderRef"
+      @on-visible-change="onVisibleChange"
+      placeholder="请选择"
+      style="width: 300px"
+    />
   </div>
 </template>
 
@@ -78,6 +84,13 @@ export default {
         }
       });
     },
+    onVisibleChange(val) {
+      console.log(val);
+      if (!val) return;
+      const nodes =
+        this.$refs.cascaderRef.$el.querySelectorAll(".ivu-cascader-menu");
+      console.log(nodes);
+    },
   },
 };
 </script>
@@ -88,12 +101,17 @@ export default {
   position: relative;
 }
 
-/deep/.ivu-cascader-menu-item:hover::after {
+/deep/.ivu-cascader-menu-item[data-title]:hover::after {
   content: attr(data-title);
   /* Add styling for your tooltip here (e.g., background, padding, border) */
   position: absolute;
-  top: 100%; /* Adjust position as needed */
-  left: 0;
+  top: 20px;
+  left: 100px;
   white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  z-index: 999;
 }
 </style>
